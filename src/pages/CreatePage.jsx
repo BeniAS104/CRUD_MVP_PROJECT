@@ -23,7 +23,7 @@ export default function CreatePage() {
   return (
     <section className="page">
       <div className="container">
-        <h1>Create New Game</h1>
+        <h1>Add a New Game</h1>
         <UserForm onSubmit={createGame} onCancel={handleCancel} />
       </div>
     </section>

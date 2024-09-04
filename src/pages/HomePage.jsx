@@ -34,7 +34,7 @@ export default function HomePage() {
 
   async function fetchGames() {
     const response = await fetch(
-      "https://raw.githubusercontent.com/BeniAS104/crud_mvp/main/data.json"
+      "https://raw.githubusercontent.com/BeniAS104/CRUD_MVP_PROJECT/main/data.json"
     ); // fetch the data from the API
     const data = await response.json(); // parse the data from string to javascript array
     localStorage.setItem("games", JSON.stringify(data)); // save the data to local storage
