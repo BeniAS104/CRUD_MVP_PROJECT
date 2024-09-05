@@ -78,12 +78,11 @@ select {
   font-size: 1rem;
   font-family: inherit;
   border: none;
-  border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
-  background-color: white;
   line-height: 1.5;
   margin: 0;
+  outline: 2px solid var(--red);
 }
 button {
   color: var(--white);
@@ -141,24 +140,30 @@ form img {
 .container {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
   padding: 2em;
+  background-color: #383838;
+  border-radius: 5px;
+  color: var(--white);
 }
 .container h1 {
   text-align: center;
 }
 form {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1em;
   align-items: center;
-
   padding: 1.5em;
-  background-color: var(--white);
+  
   transition: 0.5s;
   animation: fadeIn 0.5s;
   border-radius: 8px;
   margin: auto;
 }
-
+.creatorForm_input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
 #sign-in-form,
 #sign-up-form {
   width: 35rem;
@@ -217,6 +222,70 @@ nav a.active {
   padding: 140px 2em 2em;
 }
 
+/* ---------- search bar styling ---------- */
+.search_bar {
+  padding: 1em;
+  border-radius: 8px;
+  
+}
+
+ input {
+  
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--black);
+  color: var(--white);
+}
+/* ---------- info container styling ---------- */
+.info_container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+.info_container-first {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+.info_container-first img {
+  display: block;
+  width: 40px;
+}
+.info_container-second {
+  font-size: 1.2rem;
+}
+.info_container-second img {
+  display: block;
+  width: 20px;
+}
+.info_container-first, .info_container-second {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+.info_container-button {
+    white-space: nowrap;
+    width: 10rem;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto 1rem;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 0.25rem;
+    outline: 2px solid black;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
 /* ---------- Container Styling ---------- */
 .container {
   max-width: 700px;
@@ -262,17 +331,22 @@ nav a.active {
 }
 
 
+.content_container {
+  background-color: #383838;
+  border-radius: 5px;
+}
+.content_container > * {
+  background-color: inherit; /* Ensures that children inherit the background */
+  color: var(--white);
+}
 
 /* ---------- Filter Grid styling ---------- */
 
 .grid-filter {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1em;
   padding: 1em;
-  background-color: var(--white);
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
   margin: 0 0 3em;
   align-items: center;
 }
@@ -280,10 +354,30 @@ nav a.active {
 .grid-filter select {
   width: 100%;
   padding: 1.1rem;
+  background-color: var(--black);
+  color: var(--white);
+}
+/* Container for the custom select dropdown */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('../public/chevron_select.png') no-repeat right 10px center;
+  background-size: 32px 32px; /* Adjust the width and height of the chevron */
+  background-color: white;
+  padding-right: 30px; /* Adjust padding based on chevron size */
+  
+  border-radius: 5px;
+  font-size: 16px;
 }
 
+
+
+
+
+
 .grid-filter input,
-.grid-filter select {
+.grid-filter select,.search_bar input {
   margin: 1em 0 0;
 }
 
@@ -298,9 +392,7 @@ nav a.active {
   animation: fadeIn 0.5s;
   cursor: pointer;
   border-radius: 10px;
-  
   flex: 0 0 450px;
-  
   
 }
 
@@ -379,8 +471,6 @@ nav a.active {
   display: flex;
   justify-content: center;
   margin: 1rem auto 1rem;
-  
-  
   background-color: var(--red);
   color: var(--white);
   border-radius: 0.25rem;
