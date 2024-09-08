@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Game from "../components/Game";
 
+
 export default function GameDetailPage() {
   const [game, setGame] = useState({}); // state to handle the data (user)
   const { id } = useParams();
@@ -36,15 +37,15 @@ export default function GameDetailPage() {
   }
 
   return (
-    <section id="user-page" className="page">
+    <section id="user-page" className="page specialcss">
       <div className="container">
         <h1>{game?.title}</h1>
         <Game game={game} />
         <div className="btns">
           <button className="btn-cancel" onClick={showDeleteDialog}>
-            Delete user
+            Delete Game
           </button>
-          <button onClick={showUpdate}>Update user</button>
+          <button onClick={showUpdate}>Update Game</button>
         </div>
       </div>
     </section>

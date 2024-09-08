@@ -18,8 +18,12 @@ export default function HomePage() {
 
     async function getGames() {
       const data = localStorage.getItem("games");
-      let gamesData = data ? await fetchGames() : [];
-      setGames(gamesData);
+      if (data) {
+        setGames(JSON.parse(data));
+      } else {
+        const gamesData = await fetchGames();
+        setGames(gamesData);
+      }
     }
   }, []);
 
@@ -41,19 +45,22 @@ export default function HomePage() {
   const playtimes = [...new Set(games.map((game) => game.game_time))];
   const players = [...new Set(games.map((game) => game.number_of_players))];
 
-  let filteredGames = games.filter((game) => {
+  let filteredGames = games
+  .filter((game) => {
     return (
       game.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filterDifficulty === "" || game.difficulty === filterDifficulty) &&
       (filterTheme === "" || game.theme === filterTheme) &&
-      (filterGametype === "" || game.game_type === filterGametype) && // fixed here
-      (filterGamestyle === "" || game.game_style === filterGamestyle) && // fixed here
+      (filterGametype === "" || game.game_type === filterGametype) &&
+      (filterGamestyle === "" || game.game_style === filterGamestyle) &&
       (filterLocation === "" || game.location === filterLocation) &&
       (filterLanguage === "" || game.language === filterLanguage) &&
-      (filterPlaytime === "" || game.game_time === filterPlaytime) && // fixed here
-      (filterPlayers === "" || game.number_of_players === filterPlayers) // fixed here
+      (filterPlaytime === "" || game.game_time === filterPlaytime) &&
+      (filterPlayers === "" || game.number_of_players === filterPlayers)
     );
-  });
+  })
+  .sort((a, b) => a.title.localeCompare(b.title)); // Sort alphabetically by title
+
   
 
   return (

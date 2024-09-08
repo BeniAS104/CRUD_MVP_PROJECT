@@ -2,21 +2,11 @@
 
 /* ---------- Root Variables ---------- */
 :root {
-  --green: rgb(38, 76, 89);
-  --dark-green: rgb(9, 47, 59);
-  --light-green: rgb(172, 198, 201);
-  --light-grey: #f1f1f4;
-  --text-color-danger: rgb(152, 58, 58);
-  --text-color-dark: #333;
-  --text-color-light: #f1f1f1;
-  --text-color-danger: #f44250;
-  
   --header_red: #621619;
   --white: #F5F5F5;
   --red: #BF171C;
   --red: #BF171C;
   --black: #111111;
-  
 }
 
 /* ---------- HTML, body and rest styling ---------- */
@@ -65,9 +55,7 @@ a {
   transition: 0.5s;
 }
 
-a:hover {
-  color: var(--dark-green);
-}
+
 
 /* ---------- Form, input and button Styling ---------- */
 
@@ -102,7 +90,7 @@ button:hover {
 
 button:active {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
-  transform: translateY(1px);
+  
 }
 
 form[action$="destroy"] button,
@@ -122,10 +110,12 @@ form input {
 }
 
 form .btns {
-  grid-column: 2;
+  grid-column:span 2;
 }
 
 form img {
+  grid-column:span 2;
+  display: block;
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
@@ -153,7 +143,6 @@ form {
   gap: 1em;
   align-items: center;
   padding: 1.5em;
-  
   transition: 0.5s;
   animation: fadeIn 0.5s;
   border-radius: 8px;
@@ -174,6 +163,25 @@ form {
   justify-content: center;
   margin: 2rem auto;
 }
+
+#difficulty {
+  outline: 2px solid #2ECC43;
+}
+#theme {
+  outline: 2px solid #3E45EC;
+}
+#players {
+  outline: 2px solid #28C1B8;
+}
+#gametype {
+  outline: 2px solid #FF8A01;
+}
+#playtime {
+  outline: 2px solid #E309E8;
+}
+#gamestyle {
+  outline: 2px solid #B9A91A;
+}
 /* ---------- Navigation Styling ---------- */
 nav {
   background-color: var(--black);
@@ -190,9 +198,10 @@ nav {
 
 /* Style the links inside the navigation bar */
 nav a {
-  display: inline-block;
+  display: flex;
   color: var(--white);
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   padding: 20px 16px;
   text-decoration: none;
   letter-spacing: 0.1em;
@@ -362,7 +371,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url('../public/chevron_select.png') no-repeat right 10px center;
+  background: url('chevron_select.png') no-repeat right 10px center;
   background-size: 32px 32px; /* Adjust the width and height of the chevron */
   background-color: white;
   padding-right: 30px; /* Adjust padding based on chevron size */
@@ -370,11 +379,6 @@ select {
   border-radius: 5px;
   font-size: 16px;
 }
-
-
-
-
-
 
 .grid-filter input,
 .grid-filter select,.search_bar input {
@@ -400,13 +404,12 @@ select {
 .game_image {
   display: block;
   width: 330px;
+  aspect-ratio: 1 / 1;
   margin: 0 auto;
   border-radius: 10px;
 }
 .game-card img:not(.game_image) {
- 
   object-fit: contain;
-  border-radius: 0px;
 
 }
 
@@ -460,8 +463,8 @@ select {
 .category img{
   width: 40px;
   display: block;
-    max-width: 100%;
-    user-select: none;
+  max-width: 100%;
+    
 }
 
 .detailed_description {
@@ -526,4 +529,75 @@ select {
   color: var(--text-color-danger);
   margin-top: 10px;
   grid-column: 2;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Media Query for screens narrower than 520px */
+@media (max-width: 620px) {
+  
+  
+  .creatorForm_input {
+    grid-column: 1 / -1; /* Make each input span the full width */
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Center align buttons */
+    gap: 1rem;
+  }
+  .container h1 {
+    font-size: 2rem;
+  }
+  nav a {
+    letter-spacing: 0;
+    font-size: 1rem;
+  }
+  .image-preview {
+    margin: 0.5rem auto;
+}
+
+.grid-filter {
+  grid-template-columns: 1fr;
+}
+.game-card {
+  flex: 0 0 200px;
+  padding: 3em 2em 1em 2em;
+}
+.game_image {
+  width: 200px;
+}
+.game_card-title-container {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  max-width: 100%;
+  justify-content: space-between;
+  margin-inline: auto;
+}
+
+.categories {
+  gap: 0.5rem 0rem;
+}
+.category img {
+  width: 30px;
+  
+}
+.category {
+  gap: 0.25em;
+}
+.page {
+  animation: fadeIn 0.5s;
+  padding: 140px 1em 2em;
+}
+.specialcss .categories{
+      grid-template-columns: 1fr !important;
+      justify-content: center;
+}
+.specialcss .category {
+  gap: 1rem;
+}
 }
