@@ -371,7 +371,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url('chevron_select.png') no-repeat right 10px center;
+  background: url('../public/chevron_select.png') no-repeat right 10px center;
   background-size: 32px 32px; /* Adjust the width and height of the chevron */
   background-color: white;
   padding-right: 30px; /* Adjust padding based on chevron size */
